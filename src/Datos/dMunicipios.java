@@ -16,6 +16,8 @@ public class dMunicipios {
     public dMunicipios() {
     }
 
+    
+    //Manejo de Datos de los municipios
     public dMunicipios(String id_municipio, String nombre_municipio, String ubicacion_municipio, String clima_municipio, String id_region_municipio, String escudo_municipio, int numero_habitantes, int numero_hombre, int numero_mujeres) {
         this.id_municipio = id_municipio;
         this.nombre_municipio = nombre_municipio;
