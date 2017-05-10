@@ -3,9 +3,6 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1366, 768]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -58,17 +55,14 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace pref="239" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
                           <Component id="btnMuni" min="-2" pref="162" max="-2" attributes="0"/>
-                          <EmptySpace pref="95" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                           <Component id="btnRegi" min="-2" pref="165" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="btnIC" min="-2" pref="165" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btnIC" alignment="1" min="-2" pref="165" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -99,18 +93,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="btnReli" min="-2" pref="161" max="-2" attributes="0"/>
-                          <EmptySpace pref="302" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnMuni" alignment="3" min="-2" pref="161" max="-2" attributes="0"/>
-                              <Component id="btnRegi" alignment="3" min="-2" pref="161" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnReli" min="-2" pref="161" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnMuni" alignment="3" min="-2" pref="161" max="-2" attributes="0"/>
+                          <Component id="btnRegi" alignment="3" min="-2" pref="161" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace pref="302" max="32767" attributes="0"/>
               </Group>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
@@ -125,12 +114,19 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btnIC">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Intereses Culturales"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/File/IntCulBotonCuadrado.png"/>
+            </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnICActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnMuni">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Municipios"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/File/MunicipiosBotonCuadrado.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMuniActionPerformed"/>
@@ -138,12 +134,19 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnTrad">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Tradiciones"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/File/TradicionesBotonCuadrado.png"/>
+            </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTradActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnRegi">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Regiones"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/File/18386451_1314614405300995_25979315_n.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegiActionPerformed"/>
@@ -151,13 +154,23 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnReli">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Religiones"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/File/ReligionesBotonCuadrado.png"/>
+            </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReliActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Lenguajes"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/File/LenguajesBotonCuadrado.png"/>
+            </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

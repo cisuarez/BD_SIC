@@ -45,46 +45,63 @@ public class frmAdmonPrincipal extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1366, 768));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/File/hAdmin.jpg"))); // NOI18N
 
-        btnIC.setText("Intereses Culturales");
+        btnIC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/File/IntCulBotonCuadrado.png"))); // NOI18N
+        btnIC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnICActionPerformed(evt);
+            }
+        });
 
-        btnMuni.setText("Municipios");
+        btnMuni.setIcon(new javax.swing.ImageIcon(getClass().getResource("/File/MunicipiosBotonCuadrado.png"))); // NOI18N
         btnMuni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMuniActionPerformed(evt);
             }
         });
 
-        btnTrad.setText("Tradiciones");
+        btnTrad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/File/TradicionesBotonCuadrado.png"))); // NOI18N
+        btnTrad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTradActionPerformed(evt);
+            }
+        });
 
-        btnRegi.setText("Regiones");
+        btnRegi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/File/18386451_1314614405300995_25979315_n.png"))); // NOI18N
         btnRegi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegiActionPerformed(evt);
             }
         });
 
-        btnReli.setText("Religiones");
+        btnReli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/File/ReligionesBotonCuadrado.png"))); // NOI18N
+        btnReli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReliActionPerformed(evt);
+            }
+        });
 
-        jButton6.setText("Lenguajes");
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/File/LenguajesBotonCuadrado.png"))); // NOI18N
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(239, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(219, 219, 219)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnMuni, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                        .addGap(75, 75, 75)
                         .addComponent(btnRegi, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnIC, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnIC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(106, 106, 106)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnReli, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -107,14 +124,11 @@ public class frmAdmonPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnReli, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(302, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnMuni, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRegi, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(btnReli, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnMuni, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnRegi, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(302, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addContainerGap(313, Short.MAX_VALUE)
@@ -157,6 +171,42 @@ public class frmAdmonPrincipal extends javax.swing.JFrame {
         
         this.hide();
     }//GEN-LAST:event_btnRegiActionPerformed
+
+    private void btnTradActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTradActionPerformed
+        // TODO add your handling code here:
+        frmAdmonTradiciones frm = new frmAdmonTradiciones();
+        frm.show();
+        
+        this.hide();
+    }//GEN-LAST:event_btnTradActionPerformed
+
+    private void btnReliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReliActionPerformed
+        // TODO add your handling code here:
+        
+        frmAdmonReligiones frm = new frmAdmonReligiones();
+        frm.show();
+        
+        this.hide();
+    }//GEN-LAST:event_btnReliActionPerformed
+
+    private void btnICActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnICActionPerformed
+        // TODO add your handling code here:
+        frmAdmonInteresesCulturales frm = new frmAdmonInteresesCulturales();
+        frm.show();
+        
+        this.hide();
+
+    }//GEN-LAST:event_btnICActionPerformed
+
+    //Boton para ir al formulario de Lenguajes
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        frmAdmonLenguajes frm = new frmAdmonLenguajes();
+        frm.show();
+        
+        this.hide();
+        
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments

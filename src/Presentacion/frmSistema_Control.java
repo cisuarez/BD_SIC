@@ -1539,7 +1539,7 @@ public class frmSistema_Control extends javax.swing.JFrame {
 
         archivo.addChoosableFileFilter(filtro);
 
-        File ruta = new File("C:\\Users\\alina\\Pictures\\Imagenes Base de Datos");
+        File ruta = new File("C:\\Users\\alina\\Pictures\\");
 
         archivo.setCurrentDirectory(ruta);
 
