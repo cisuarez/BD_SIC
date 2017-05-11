@@ -1,6 +1,7 @@
 package Logica;
 
 import Datos.dTradiciones;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +20,7 @@ public class fTradiciones {
     int total_registros;
     
     
-     
+    
     
     
     /****************************************************************
@@ -42,13 +43,20 @@ public class fTradiciones {
         
         
         try {
+        
+            FileInputStream imagen;
+            
             PreparedStatement pat = cn.prepareStatement(sSQL);
             pat.setString(1, dts.getId_Tradicion());
             pat.setString(2, dts.getNombre_Tradicion());
             pat.setString(3, dts.getDescripcion_Tradicion());
             pat.setString(4, dts.getFecha_Festejo());
-            pat.setString(5, dts.getImagen_Tradicion());
+            pat.setBinaryStream(5, dts.getImagen_Tradicion());
             pat.setString(6, dts.getId_Tipo_Tradicion());
+            
+            
+            
+            
             
             int n = pat.executeUpdate();
             

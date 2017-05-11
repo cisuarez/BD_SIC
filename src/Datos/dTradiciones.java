@@ -1,18 +1,22 @@
 package Datos;
 
+import java.io.FileInputStream;
+
 public class dTradiciones {
     
     String Id_Tradicion;
     String Nombre_Tradicion;
     String Descripcion_Tradicion;
     String Fecha_Festejo;
-    String Imagen_Tradicion;
+    FileInputStream Imagen_Tradicion;
     String Id_Tipo_Tradicion;
+    
+    
 
     public dTradiciones() {
     }
 
-    public dTradiciones(String Id_Tradicion, String Nombre_Tradicion, String Descripcion_Tradicion, String Fecha_Festejo, String Imagen_Tradicion, String Id_Tipo_Tradicion) {
+    public dTradiciones(String Id_Tradicion, String Nombre_Tradicion, String Descripcion_Tradicion, String Fecha_Festejo, FileInputStream Imagen_Tradicion, String Id_Tipo_Tradicion) {
         this.Id_Tradicion = Id_Tradicion;
         this.Nombre_Tradicion = Nombre_Tradicion;
         this.Descripcion_Tradicion = Descripcion_Tradicion;
@@ -53,11 +57,11 @@ public class dTradiciones {
         this.Fecha_Festejo = Fecha_Festejo;
     }
 
-    public String getImagen_Tradicion() {
+    public FileInputStream getImagen_Tradicion() {
         return Imagen_Tradicion;
     }
 
-    public void setImagen_Tradicion(String Imagen_Tradicion) {
+    public void setImagen_Tradicion(FileInputStream Imagen_Tradicion) {
         this.Imagen_Tradicion = Imagen_Tradicion;
     }
 

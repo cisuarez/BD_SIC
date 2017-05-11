@@ -61,6 +61,19 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
     }
     
     
+    void limpiarCampos(){
+        
+        this.txtNom.setText("");
+        this.txtDes.setText("");
+        this.txtId.setText("");
+        this.txtFecha.setText("");
+        this.txtImagenURL.setText("");
+        this.lblImagen.setIcon(null);
+        
+        TipoTrad = "";
+    
+    }
+    
     
     void mostrarTradiciones(String buscar, int tarea){
     
@@ -733,18 +746,16 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
 
         dts.setId_Tradicion(txtId.getText());
         dts.setDescripcion_Tradicion(txtDes.getText());
-        dts.setImagen_Tradicion(txtNom.getText());
+        dts.setNombre_Tradicion(txtNom.getText());
         dts.setFecha_Festejo(txtFecha.getText());
-        dts.setImagen_Tradicion(txtImagenURL.getText());
+        dts.setImagen_Tradicion(ImagenTradicion);
         dts.setId_Tipo_Tradicion(TipoTrad);
         
 
         func.insertar(dts);
         
-
-        //mostrarReligiones("");
-        //borrarDatos_txt();
-
+        mostrarTradiciones("", 1);
+        limpiarCampos();
         
         
     }//GEN-LAST:event_btnAgregarTradicionActionPerformed
