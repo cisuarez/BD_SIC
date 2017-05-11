@@ -2,6 +2,7 @@ package Logica;
 
 import Datos.dTradiciones;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -19,6 +20,59 @@ public class fTradiciones {
     
     
      
+    
+    
+    /****************************************************************
+     *                                                              *    
+     *                                                              *
+     *          OPERACIONES BASICAS DE TRADICIONES                  *
+     *                                                              *
+     *                                                              *
+     ************************************************************** *
+     */
+    
+    
+        //Metodo Insertar 
+    public boolean insertar(dTradiciones dts){
+        
+        sSQL = "INSERT INTO tradiciones (`id_tradicion`, `nombre_tradicion`, "
+                + "`descripcion_tradicion`, `fecha_festejo`, `imagen_tradicion`,"
+                + " `id_tipo_tradicion`) VALUES (?, ?, ?, ?, ?, ?);";
+        
+        
+        
+        try {
+            PreparedStatement pat = cn.prepareStatement(sSQL);
+            pat.setString(1, dts.getId_Tradicion());
+            pat.setString(2, dts.getNombre_Tradicion());
+            pat.setString(3, dts.getDescripcion_Tradicion());
+            pat.setString(4, dts.getFecha_Festejo());
+            pat.setString(5, dts.getImagen_Tradicion());
+            pat.setString(6, dts.getId_Tipo_Tradicion());
+            
+            int n = pat.executeUpdate();
+            
+            if(n != 0){
+                return true;
+            
+            }else{
+                return false;
+            }
+             
+            
+        } catch (Exception e) {
+            
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+            
+        }
+    
+    }
+    
+
+    
+    
+    
     /*
     LIKE '%"
     

@@ -6,6 +6,7 @@
 package Presentacion.Administrador;
 
 import Datos.dTipoTradiciones;
+import Datos.dTradiciones;
 import Logica.Conexion;
 import Logica.fTipoTradiciones;
 import Logica.fTradiciones;
@@ -14,6 +15,7 @@ import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -35,11 +37,18 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
     
     private Conexion mysql = new Conexion();
     private Connection cn = mysql.Conectar();
+    
+    
+    private String accion = "agregar";
+
+    
     String TipoTrad;
     String CrearIdTipoTrad;
-    Image ImagenTradicion;
-    boolean seInsertoImagen = false; 
 
+    boolean seInsertoImagen = false; 
+    public FileInputStream ImagenTradicion;
+    
+    
     public frmAdmonTradiciones() {
         initComponents();
         
@@ -103,7 +112,7 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
         txtTipoAgregar = new javax.swing.JTextField();
         btnAgregarTipo = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        btnAgregarTradicion = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -121,6 +130,7 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
         txtDes = new javax.swing.JTextArea();
         jSeparator1 = new javax.swing.JSeparator();
         txtImagenURL = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1366, 768));
@@ -145,6 +155,12 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
         btnExaminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExaminarActionPerformed(evt);
+            }
+        });
+
+        cobTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cobTipoActionPerformed(evt);
             }
         });
 
@@ -194,7 +210,12 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton3.setText("Agregar");
+        btnAgregarTradicion.setText("Agregar");
+        btnAgregarTradicion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarTradicionActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Modificar");
 
@@ -208,7 +229,7 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jButton3)
+                .addComponent(btnAgregarTradicion)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
                 .addGap(18, 18, 18)
@@ -222,7 +243,7 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
+                    .addComponent(btnAgregarTradicion)
                     .addComponent(jButton4)
                     .addComponent(jButton5)
                     .addComponent(jButton6))
@@ -348,6 +369,8 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
+        jButton1.setText("Generar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -369,11 +392,13 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                                        .addComponent(txtNom))
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton1)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                                 .addComponent(jLabel15))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -403,15 +428,29 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel15))
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(jLabel15))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnExaminar)
+                                    .addComponent(txtImagenURL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jButton1)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -427,13 +466,7 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(cobTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnExaminar)
-                            .addComponent(txtImagenURL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cobTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
@@ -611,8 +644,8 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarTipoActionPerformed
 
     private void btnExaminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExaminarActionPerformed
-        // TODO add your handling code here:
-
+        
+        try{
         
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Formatos de Imagenes", "jpg", "jpeg", "png");
 
@@ -635,7 +668,9 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
             Image foto = getToolkit().getImage(txtImagenURL.getText());
             ImageIcon ic = new ImageIcon();
             foto = foto.getScaledInstance(360, 180, Image.SCALE_DEFAULT);
-            //lblImagen.setIcon(new ImageIcon(foto));
+
+            
+            ImagenTradicion = new FileInputStream(txtImagenURL.getText());
             
             ImageIcon ii = null;
             InputStream is = null;
@@ -647,75 +682,97 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
             
             seInsertoImagen = true;
 
+        }
             
-            /*
-            ImageIcon ii = null;
-            InputStream is = null;
-            
-            is = rs.getBinaryStream(1);
-            BufferedImage bi = ImageIO.read(is);
-            ii = new ImageIcon(bi.getScaledInstance(228, 128, 228));
-            this.lblImagen.setIcon(ii);
-
-            */
+        }
+        catch(Exception e){
+        
         }
         
-
-/*
         
-    private void btnExaminarImagenActionPerformed(java.awt.event.ActionEvent evt) {                                                  
-        // TODO add your handling code here:
-
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Formatos de Imagenes", "jpg", "jpeg", "png");
-
-        JFileChooser archivo = new JFileChooser();
-        archivo.setDialogTitle("Abrir Imagen...");
-
-        archivo.addChoosableFileFilter(filtro);
-
-        File ruta = new File("C:\\Users\\alina\\Pictures\\");
-
-        archivo.setCurrentDirectory(ruta);
-
-        int ventana = archivo.showOpenDialog(null);
-
-        if (ventana == JFileChooser.APPROVE_OPTION) {
-
-            File file = archivo.getSelectedFile();
-            txtNom_Imagen.setText(String.valueOf(file));
-            Image foto = getToolkit().getImage(txtNom_Imagen.getText());
-            foto = foto.getScaledInstance(360, 180, Image.SCALE_DEFAULT);
-            lblFoto.setIcon(new ImageIcon(foto));
-
-            seInsertoImagen = true;
-
-        }
-    }                                                 
-        
-
-//Metodo para extraer una imagen de una base de datos
-        
-           Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT imagen_tradicion FROM tradiciones WHERE id_tradicion = '" + txtId.getText() + "';");
-            
-            ImageIcon ii = null;
-            InputStream is = null;
-            rs.next();
-            is = rs.getBinaryStream(1);
-            BufferedImage bi = ImageIO.read(is);
-            ii = new ImageIcon(bi.getScaledInstance(228, 128, 228));
-            this.lblImagen.setIcon(ii);
-
-
-
-
-        
-        */
-
-
-
-
     }//GEN-LAST:event_btnExaminarActionPerformed
+
+    private void btnAgregarTradicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTradicionActionPerformed
+
+        
+        accion = "agregar";
+
+        if (txtId.getText().length() == 0) {
+            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar un identificador");
+            txtId.requestFocus();
+            return;
+        }
+
+        if (txtNom.getText().length() == 0) {
+            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar un nombre de tradicion");
+            txtNom.requestFocus();
+            return;
+        }
+
+        if (txtDes.getText().length() == 0) {
+            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar una descripcion");
+            txtDes.requestFocus();
+            return;
+        }
+        
+        
+        if (txtFecha.getText().length() == 0) {
+            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar una fecha");
+            txtFecha.requestFocus();
+            return;
+        }
+        
+        if (seInsertoImagen == false) {
+            JOptionPane.showConfirmDialog(rootPane, "Debes ingresar una imagen");
+            btnExaminar.requestFocus();
+            return;
+        }
+        
+        dTradiciones dts = new dTradiciones();
+        fTradiciones func = new fTradiciones();
+
+        dts.setId_Tradicion(txtId.getText());
+        dts.setDescripcion_Tradicion(txtDes.getText());
+        dts.setImagen_Tradicion(txtNom.getText());
+        dts.setFecha_Festejo(txtFecha.getText());
+        dts.setImagen_Tradicion(txtImagenURL.getText());
+        dts.setId_Tipo_Tradicion(TipoTrad);
+        
+
+        func.insertar(dts);
+        
+
+        //mostrarReligiones("");
+        //borrarDatos_txt();
+
+        
+        
+    }//GEN-LAST:event_btnAgregarTradicionActionPerformed
+
+    private void cobTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cobTipoActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+         try {
+            
+        //    Limpiar();
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM tipo_tradicion WHERE nombre_tipo_tradicion = '" + 
+                                            this.cobTipo.getSelectedItem() + "';");
+
+            rs.next();
+            
+            TipoTrad = rs.getString("id_tipo_tradicion");
+            
+     //       llenandoComboBox_Municipios(IdRegion);
+
+        } catch (Exception e) {
+
+        }
+
+        
+    }//GEN-LAST:event_cobTipoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -755,13 +812,14 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarTipo;
+    private javax.swing.JButton btnAgregarTradicion;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnBuscar1;
     private javax.swing.JButton btnExaminar;
     private javax.swing.JButton btnMostrarTodo;
     private javax.swing.JComboBox<String> cobTipo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
