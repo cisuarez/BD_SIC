@@ -204,6 +204,23 @@ public class fTradiciones {
     
     */
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public DefaultTableModel mostrarTodo(String buscar, int Condicion){
 
         DefaultTableModel modelo;
@@ -279,7 +296,7 @@ public class fTradiciones {
         public ArrayList<String> LlenarComboBoxTipoTradicion(){
         ArrayList<String> lista = new ArrayList<String>();
         
-        sSQL = "SELECT * FROM tipo_tradicion";
+        sSQL = "SELECT * FROM tipo_tradicion GROUP BY nombre_tipo_tradicion";
         
         try {
             

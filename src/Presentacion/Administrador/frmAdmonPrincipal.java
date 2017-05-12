@@ -5,8 +5,10 @@
  */
 package Presentacion.Administrador;
 
+import Presentacion.Interfaz_Usuario.frmMenu_Usuario;
 import java.awt.Color;
 import static java.awt.Frame.MAXIMIZED_BOTH;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,10 +21,10 @@ public class frmAdmonPrincipal extends javax.swing.JFrame {
      */
     public frmAdmonPrincipal() {
         initComponents();
-        
+
         this.setExtendedState(MAXIMIZED_BOTH);
         this.getContentPane().setBackground(Color.WHITE);
-        
+
         this.jPanel1.setBackground(Color.WHITE);
     }
 
@@ -43,6 +45,8 @@ public class frmAdmonPrincipal extends javax.swing.JFrame {
         btnRegi = new javax.swing.JButton();
         btnReli = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,23 +94,44 @@ public class frmAdmonPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Volver al Menu de Usuario");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(239, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnMuni, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(75, 75, 75)
                         .addComponent(btnRegi, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnIC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnIC, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(106, 106, 106)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnReli, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(225, 225, 225))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnReli, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(234, 234, 234))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(229, 229, 229)
@@ -115,12 +140,6 @@ public class frmAdmonPrincipal extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnIC, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +147,20 @@ public class frmAdmonPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnMuni, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnRegi, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(302, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnIC, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(49, 49, 49))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addContainerGap(313, Short.MAX_VALUE)
@@ -160,15 +192,15 @@ public class frmAdmonPrincipal extends javax.swing.JFrame {
     private void btnMuniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMuniActionPerformed
         frmAdmonMunicipios frm = new frmAdmonMunicipios();
         frm.show();
-        
+
         this.hide();
-        
+
     }//GEN-LAST:event_btnMuniActionPerformed
 
     private void btnRegiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegiActionPerformed
         frmAdmonRegiones frm = new frmAdmonRegiones();
         frm.show();
-        
+
         this.hide();
     }//GEN-LAST:event_btnRegiActionPerformed
 
@@ -176,24 +208,24 @@ public class frmAdmonPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         frmAdmonTradiciones frm = new frmAdmonTradiciones();
         frm.show();
-        
+
         this.hide();
     }//GEN-LAST:event_btnTradActionPerformed
 
     private void btnReliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReliActionPerformed
         // TODO add your handling code here:
-        
+
         frmAdmonReligiones frm = new frmAdmonReligiones();
         frm.show();
-        
+
         this.hide();
     }//GEN-LAST:event_btnReliActionPerformed
 
     private void btnICActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnICActionPerformed
         // TODO add your handling code here:
-        frmAdmonInteresesCulturales frm = new frmAdmonInteresesCulturales();
+        frmAdmonIC frm = new frmAdmonIC();
         frm.show();
-        
+
         this.hide();
 
     }//GEN-LAST:event_btnICActionPerformed
@@ -203,10 +235,28 @@ public class frmAdmonPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         frmAdmonLenguajes frm = new frmAdmonLenguajes();
         frm.show();
-        
+
         this.hide();
-        
+
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        int confirmacion = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de salir?", "Confirmar", 2);
+
+        if (confirmacion == 0) {
+
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        frmMenu_Usuario frm = new frmMenu_Usuario();
+
+        frm.show();
+        this.hide();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,7 +298,9 @@ public class frmAdmonPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnMuni;
     private javax.swing.JButton btnRegi;
     private javax.swing.JButton btnReli;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnTrad;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

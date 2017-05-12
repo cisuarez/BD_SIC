@@ -155,7 +155,43 @@ public class fTipoInteresCultural {
     }
     
     
+/*
     
+    
+    
+        public ArrayList<String> LlenarComboBoxTipoTradicion(){
+        ArrayList<String> lista = new ArrayList<String>();
+        
+        sSQL = "SELECT * FROM tipo_tradicion";
+        
+        try {
+            
+            
+             Statement st = cn.createStatement();
+             ResultSet rs = st.executeQuery(sSQL);
+  
+        } catch (Exception e) {
+            
+            JOptionPane.showInputDialog("Se produjo un error: "+ e);
+        }
+        try {
+             Statement st = cn.createStatement();
+             ResultSet rs = st.executeQuery(sSQL);
+            
+            while(rs.next()){
+                
+                lista.add(rs.getString("nombre_tipo_tradicion"));
+                
+            
+            }
+        } catch (Exception e) {
+        }
+    
+        return lista;
+    }
+    
+    
+    */    
      public ArrayList<String> llenar_cob(){
         ArrayList<String> lista = new ArrayList<String>();
         
@@ -188,4 +224,10 @@ public class fTipoInteresCultural {
    
     
     
+    
+
+     
+     
+     
+     
 }

@@ -1,5 +1,7 @@
 package Datos;
 
+import java.io.FileInputStream;
+
 public class dIntereses_Culturales {
     
     String Id_Interes_Cultural;
@@ -7,14 +9,14 @@ public class dIntereses_Culturales {
     String Descripcion_Interes_Cultural;
     String Horario_Interes_Cultural;
     String Direccion_Interes_Cultural;
-    String Imagen_Interes_Cultural;
+    FileInputStream Imagen_Interes_Cultural;
     String Id_Municipio;
     String Id_Tipo_Interes;
 
     public dIntereses_Culturales() {
     }
 
-    public dIntereses_Culturales(String Id_Interes_Cultural, String Nombre_Interes_Cultural, String Descripcion_Interes_Cultural, String Horario_Interes_Cultural, String Direccion_Interes_Cultural, String Imagen_Interes_Cultural, String Id_Municipio, String Id_Tipo_Interes) {
+    public dIntereses_Culturales(String Id_Interes_Cultural, String Nombre_Interes_Cultural, String Descripcion_Interes_Cultural, String Horario_Interes_Cultural, String Direccion_Interes_Cultural, FileInputStream Imagen_Interes_Cultural, String Id_Municipio, String Id_Tipo_Interes) {
         this.Id_Interes_Cultural = Id_Interes_Cultural;
         this.Nombre_Interes_Cultural = Nombre_Interes_Cultural;
         this.Descripcion_Interes_Cultural = Descripcion_Interes_Cultural;
@@ -65,11 +67,11 @@ public class dIntereses_Culturales {
         this.Direccion_Interes_Cultural = Direccion_Interes_Cultural;
     }
 
-    public String getImagen_Interes_Cultural() {
+    public FileInputStream getImagen_Interes_Cultural() {
         return Imagen_Interes_Cultural;
     }
 
-    public void setImagen_Interes_Cultural(String Imagen_Interes_Cultural) {
+    public void setImagen_Interes_Cultural(FileInputStream Imagen_Interes_Cultural) {
         this.Imagen_Interes_Cultural = Imagen_Interes_Cultural;
     }
 
