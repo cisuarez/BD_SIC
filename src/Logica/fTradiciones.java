@@ -77,7 +77,125 @@ public class fTradiciones {
     
     }
     
+    public boolean eliminar(dTradiciones dts){
+    
+        sSQL ="DELETE FROM tradiciones WHERE id_tradicion = ?" ;
+    
+        try{
+        
+            PreparedStatement pat = cn.prepareStatement(sSQL);
+            
+            pat.setString(1, dts.getId_Tradicion());
+            
+            
+            int n = pat.executeUpdate();
+            
+            if(n != 0){
+                return true;
+            
+            }else{
+                return false;
+            }
+            
+        }
+        catch(Exception e){
+            
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+            
+            
+        }
+            
+    
+    }
+    
+    
 
+    public boolean modificar(dTradiciones dts){
+        
+        sSQL = "UPDATE tradiciones SET nombre_tradicion = ?,"
+                + " descripcion_tradicion = ?, fecha_festejo = ?, "
+                + " id_tipo_tradicion = ? "
+                + " WHERE id_tradicion = ?;";
+     
+        
+        String sSQLimagen;
+        
+        
+        try {
+            
+            //
+            PreparedStatement pat = cn.prepareStatement(sSQL);
+            
+            
+            pat.setString(1, dts.getNombre_Tradicion());
+            pat.setString(2, dts.getDescripcion_Tradicion());
+            pat.setString(3, dts.getFecha_Festejo());
+            pat.setString(4, dts.getId_Tipo_Tradicion());
+            pat.setString(5, dts.getId_Tradicion());
+            
+            
+            //patImagen.setBinaryStream(1, dts.getImagen_Tradicion());            
+           // patImagen.setString(2, dts.getId_Tradicion());            
+            
+            
+            int n = pat.executeUpdate();
+            
+            if(n != 0){
+                return true;
+            
+            }else{
+                return false;
+            }
+            
+            //
+            
+        } catch (Exception e) {
+            
+           // JOptionPane.showConfirmDialog(null, e);
+            return false;
+            
+        }
+    
+    }
+    
+    public boolean actualizarImagen(dTradiciones dts){
+        
+        sSQL = "UPDATE tradiciones SET imagen_tradicion =? "
+             + "WHERE id_tradicion = ?;";
+        
+        
+        try {
+            
+            PreparedStatement pat = cn.prepareStatement(sSQL);
+          
+            pat.setBinaryStream(1, dts.getImagen_Tradicion());            
+            pat.setString(2, dts.getId_Tradicion());            
+            
+            
+            int n = pat.executeUpdate();
+            
+            if(n != 0){
+                return true;
+            
+            }else{
+                return false;
+            }
+            
+            //
+            
+        } catch (Exception e) {
+            
+        //    JOptionPane.showConfirmDialog(null, e);
+            return false;
+            
+        }
+    
+    }
+    
+    
+    
+    
     
     
     

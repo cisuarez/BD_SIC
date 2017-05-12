@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Presentacion.Administrador;
 
 import Datos.dTipoTradiciones;
@@ -34,51 +29,42 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmAdmonTradiciones extends javax.swing.JFrame {
 
-    
     private Conexion mysql = new Conexion();
     private Connection cn = mysql.Conectar();
-    
-    
+
     private String accion = "agregar";
 
-    
     String TipoTrad;
     String CrearIdTipoTrad;
 
-    boolean seInsertoImagen = false; 
+    boolean seInsertoImagen = false;
     public FileInputStream ImagenTradicion;
-    
-    
+
     public frmAdmonTradiciones() {
         initComponents();
-        
+
         llenandoComboBoxTipo();
         mostrarTradiciones("", 1);
-        
+
         this.setExtendedState(MAXIMIZED_BOTH);
-        
-        
+
     }
-    
-    
-    void limpiarCampos(){
-        
+
+    void limpiarCampos() {
+
         this.txtNom.setText("");
         this.txtDes.setText("");
         this.txtId.setText("");
         this.txtFecha.setText("");
         this.txtImagenURL.setText("");
         this.lblImagen.setIcon(null);
-        
+
         TipoTrad = "";
-    
+
     }
-    
-    
-    void mostrarTradiciones(String buscar, int tarea){
-    
-    
-    
+
+    void mostrarTradiciones(String buscar, int tarea) {
+
         try {
             DefaultTableModel modelo;
             fTradiciones func = new fTradiciones();
@@ -87,15 +73,12 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
 
             tblTradiciones.setModel(modelo);
 
-
         } catch (Exception e) {
             JOptionPane.showConfirmDialog(rootPane, e);
         }
-        
-    
+
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -126,9 +109,9 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
         btnAgregarTipo = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         btnAgregarTradicion = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTradiciones = new javax.swing.JTable();
@@ -144,6 +127,7 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         txtImagenURL = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        btnActualizarImagen = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1366, 768));
@@ -230,11 +214,26 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Modificar");
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("Eliminar");
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
-        jButton6.setText("Limpiar");
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -244,12 +243,12 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(btnAgregarTradicion)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(btnModificar)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5)
+                .addComponent(btnEliminar)
                 .addGap(18, 18, 18)
-                .addComponent(jButton6)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(btnLimpiar)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,9 +256,9 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregarTradicion)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
+                    .addComponent(btnModificar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnLimpiar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -384,6 +383,13 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
 
         jButton1.setText("Generar");
 
+        btnActualizarImagen.setText("Actualizar Imagen");
+        btnActualizarImagen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarImagenActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -426,12 +432,13 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
                                         .addComponent(cobTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtImagenURL, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnExaminar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lblImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnActualizarImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -453,7 +460,9 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnExaminar)
-                                    .addComponent(txtImagenURL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(txtImagenURL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnActualizarImagen))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -516,18 +525,15 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
-    
+
     private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
         // TODO add your handling code here:
-        
+
         mostrarTradiciones(txtBuscar.getText(), 1);
         this.txtId.setText(txtBuscar.getText());
     }//GEN-LAST:event_txtBuscarActionPerformed
 
-    
-    
+
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         frmAdmonPrincipal frm = new frmAdmonPrincipal();
         frm.show();
@@ -538,22 +544,21 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
     private void tblTradicionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTradicionesMouseClicked
 
         int fila = tblTradiciones.rowAtPoint(evt.getPoint());
-        
+
         txtId.setText(tblTradiciones.getValueAt(fila, 0).toString());
         txtNom.setText(tblTradiciones.getValueAt(fila, 1).toString());
         txtDes.setText(tblTradiciones.getValueAt(fila, 2).toString());
-        txtFecha.setText(tblTradiciones.getValueAt(fila,3).toString());
-        
-        String Tipo = tblTradiciones.getValueAt(fila,4).toString();
+        txtFecha.setText(tblTradiciones.getValueAt(fila, 3).toString());
+
+        String Tipo = tblTradiciones.getValueAt(fila, 4).toString();
 
         cobTipo.setSelectedItem(Tipo);
 
-        try{
-        
-        
+        try {
+
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery("SELECT imagen_tradicion FROM tradiciones WHERE id_tradicion = '" + txtId.getText() + "';");
-            
+
             ImageIcon ii = null;
             InputStream is = null;
             rs.next();
@@ -562,15 +567,12 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
             ii = new ImageIcon(bi.getScaledInstance(228, 128, 228));
             this.lblImagen.setIcon(ii);
 
+        } catch (Exception e) {
+
         }
-        catch(Exception e){
-        
-        }
-    
+
     }//GEN-LAST:event_tblTradicionesMouseClicked
 
-    
-        
     void llenandoComboBoxTipo() {
 
         ArrayList<String> lista = new ArrayList<String>();
@@ -582,132 +584,121 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
         }
 
     }
-    
-    
+
+
     private void btnMostrarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarTodoActionPerformed
         // TODO add your handling code here:
-        
-        mostrarTradiciones("",1);
-        
+
+        mostrarTradiciones("", 1);
+
     }//GEN-LAST:event_btnMostrarTodoActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
-                mostrarTradiciones(txtBuscar.getText(), 1);
-        
-        
+        mostrarTradiciones(txtBuscar.getText(), 1);
+
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
         // TODO add your handling code here:
-        
-                mostrarTradiciones(txtBuscar.getText(), 2);
-        
+
+        mostrarTradiciones(txtBuscar.getText(), 2);
+
     }//GEN-LAST:event_btnBuscar1ActionPerformed
 
     private void btnAgregarTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTipoActionPerformed
-        
-        
+
         boolean band = true;
         TipoTrad = txtTipoAgregar.getText();
-        CrearIdTipoTrad  = TipoTrad.substring(0,3);
-        
+        CrearIdTipoTrad = TipoTrad.substring(0, 3);
+
         String IdTipoDefinitivo;
-        
-        IdTipoDefinitivo = CrearIdTipoTrad.toUpperCase() +"TT";
-        
+
+        IdTipoDefinitivo = CrearIdTipoTrad.toUpperCase() + "TT";
+
         if (txtTipoAgregar.getText().length() == 0) {
             JOptionPane.showConfirmDialog(rootPane, "Debes ingresar un dato");
             txtTipoAgregar.requestFocus();
             return;
         }
-        
+
         if (!txtTipoAgregar.getText().equals("")) {
-            
-            fTipoTradiciones f = new fTipoTradiciones(); 
-           
-            
+
+            fTipoTradiciones f = new fTipoTradiciones();
+
             int confirmacion = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro que quieres ingresar el dato?", "Confirmar", 2);
 
             if (confirmacion == 0) {
-                
+
                 String dato;
-                
+
                 dTipoTradiciones dts = new dTipoTradiciones();
                 fTipoTradiciones func = new fTipoTradiciones();
-                
+
                 dts.setId_Tipo_Tradicion(IdTipoDefinitivo);
                 dts.setNombre_Tipo_Tradicion(txtTipoAgregar.getText());
-                
+
                 func.insertar(dts);
-                
-                     
-                JOptionPane.showConfirmDialog(rootPane, "Dato Ingresado con un Id: "+IdTipoDefinitivo+"");
-                
-               
-                
+
+                JOptionPane.showConfirmDialog(rootPane, "Dato Ingresado con un Id: " + IdTipoDefinitivo + "");
+
                 llenandoComboBoxTipo();
-                
+
             }
-        
+
         }
 
-        
-        
+
     }//GEN-LAST:event_btnAgregarTipoActionPerformed
 
     private void btnExaminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExaminarActionPerformed
-        
-        try{
-        
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Formatos de Imagenes", "jpg", "jpeg", "png");
 
-        JFileChooser archivo = new JFileChooser();
-        archivo.setDialogTitle("Abrir Imagen...");
+        try {
 
-        archivo.addChoosableFileFilter(filtro);
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("Formatos de Imagenes", "jpg", "jpeg", "png");
 
-        File ruta = new File("C:\\Users\\alina\\Pictures\\");
+            JFileChooser archivo = new JFileChooser();
+            archivo.setDialogTitle("Abrir Imagen...");
 
-        archivo.setCurrentDirectory(ruta);
+            archivo.addChoosableFileFilter(filtro);
 
-        int ventana = archivo.showOpenDialog(null);
-        
-        
-        if (ventana == JFileChooser.APPROVE_OPTION) {
+            File ruta = new File("C:\\Users\\alina\\Pictures\\");
 
-            File file = archivo.getSelectedFile();
-            txtImagenURL.setText(String.valueOf(file));
-            Image foto = getToolkit().getImage(txtImagenURL.getText());
-            ImageIcon ic = new ImageIcon();
-            foto = foto.getScaledInstance(360, 180, Image.SCALE_DEFAULT);
+            archivo.setCurrentDirectory(ruta);
 
-            
-            ImagenTradicion = new FileInputStream(txtImagenURL.getText());
-            
-            ImageIcon ii = null;
-            InputStream is = null;
-            
-            
-            ic = new ImageIcon(foto.getScaledInstance(228, 128, 228));
-            
-            lblImagen.setIcon(ic);
-            
-            seInsertoImagen = true;
+            int ventana = archivo.showOpenDialog(null);
+
+            if (ventana == JFileChooser.APPROVE_OPTION) {
+
+                File file = archivo.getSelectedFile();
+                txtImagenURL.setText(String.valueOf(file));
+                Image foto = getToolkit().getImage(txtImagenURL.getText());
+                ImageIcon ic = new ImageIcon();
+                foto = foto.getScaledInstance(360, 180, Image.SCALE_DEFAULT);
+
+                ImagenTradicion = new FileInputStream(txtImagenURL.getText());
+
+                ImageIcon ii = null;
+                InputStream is = null;
+
+                ic = new ImageIcon(foto.getScaledInstance(228, 128, 228));
+
+                lblImagen.setIcon(ic);
+
+                seInsertoImagen = true;
+
+            }
+
+        } catch (Exception e) {
 
         }
-            
-        }
-        catch(Exception e){
-        
-        }
-        
-        
+
+
     }//GEN-LAST:event_btnExaminarActionPerformed
 
     private void btnAgregarTradicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarTradicionActionPerformed
 
-        
         accion = "agregar";
 
         if (txtId.getText().length() == 0) {
@@ -727,64 +718,177 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
             txtDes.requestFocus();
             return;
         }
-        
-        
+
         if (txtFecha.getText().length() == 0) {
             JOptionPane.showConfirmDialog(rootPane, "Debes ingresar una fecha");
             txtFecha.requestFocus();
             return;
         }
-        
+
         if (seInsertoImagen == false) {
             JOptionPane.showConfirmDialog(rootPane, "Debes ingresar una imagen");
             btnExaminar.requestFocus();
             return;
         }
-        
-        dTradiciones dts = new dTradiciones();
-        fTradiciones func = new fTradiciones();
 
-        dts.setId_Tradicion(txtId.getText());
-        dts.setDescripcion_Tradicion(txtDes.getText());
-        dts.setNombre_Tradicion(txtNom.getText());
-        dts.setFecha_Festejo(txtFecha.getText());
-        dts.setImagen_Tradicion(ImagenTradicion);
-        dts.setId_Tipo_Tradicion(TipoTrad);
-        
+        int confirmacion = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de agregar el registro?", "Confirmar", 2);
 
-        func.insertar(dts);
-        
-        mostrarTradiciones("", 1);
-        limpiarCampos();
-        
-        
+        if (confirmacion == 0) {
+
+            dTradiciones dts = new dTradiciones();
+            fTradiciones func = new fTradiciones();
+
+            dts.setId_Tradicion(txtId.getText());
+            dts.setDescripcion_Tradicion(txtDes.getText());
+            dts.setNombre_Tradicion(txtNom.getText());
+            dts.setFecha_Festejo(txtFecha.getText());
+            dts.setImagen_Tradicion(ImagenTradicion);
+            dts.setId_Tipo_Tradicion(TipoTrad);
+
+            func.insertar(dts);
+
+            mostrarTradiciones("", 1);
+            limpiarCampos();
+
+            JOptionPane.showConfirmDialog(rootPane, "Dato Ingresado correctamente...");
+            seInsertoImagen = false;
+
+        }
+
+
     }//GEN-LAST:event_btnAgregarTradicionActionPerformed
 
     private void cobTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cobTipoActionPerformed
         // TODO add your handling code here:
-        
-        
-        
-         try {
-            
-        //    Limpiar();
+
+        try {
+
+            //    Limpiar();
             Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM tipo_tradicion WHERE nombre_tipo_tradicion = '" + 
-                                            this.cobTipo.getSelectedItem() + "';");
+            ResultSet rs = st.executeQuery("SELECT * FROM tipo_tradicion WHERE nombre_tipo_tradicion = '"
+                    + this.cobTipo.getSelectedItem() + "';");
 
             rs.next();
-            
-            TipoTrad = rs.getString("id_tipo_tradicion");
-            
-     //       llenandoComboBox_Municipios(IdRegion);
 
+            TipoTrad = rs.getString("id_tipo_tradicion");
+
+            //       llenandoComboBox_Municipios(IdRegion);
         } catch (Exception e) {
 
         }
 
-        
+
     }//GEN-LAST:event_cobTipoActionPerformed
 
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        limpiarCampos();
+
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+
+        if (!txtId.getText().equals("")) {
+
+            int confirmacion = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de eliminar el registro?", "Confirmar", 2);
+
+            if (confirmacion == 0) {
+                fTradiciones func = new fTradiciones();
+                dTradiciones dts = new dTradiciones();
+
+                dts.setId_Tradicion(txtId.getText());
+
+                func.eliminar(dts);
+
+                mostrarTradiciones("", 1);
+                limpiarCampos();
+                JOptionPane.showConfirmDialog(rootPane, "Dato Eliminado...");
+
+            }
+
+        }
+
+
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+
+        if (!txtId.getText().equals("")) {
+
+            int confirmacion = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de modificar el registro?", "Confirmar", 2);
+
+            if (confirmacion == 0) {
+
+                fTradiciones func = new fTradiciones();
+                dTradiciones dts = new dTradiciones();
+
+                dts.setId_Tradicion(txtId.getText());
+                dts.setDescripcion_Tradicion(txtDes.getText());
+                dts.setNombre_Tradicion(txtNom.getText());
+                dts.setFecha_Festejo(txtFecha.getText());
+                dts.setId_Tipo_Tradicion(TipoTrad);
+         //       dts.setImagen_Tradicion(ImagenTradicion);
+        
+                
+                func.modificar(dts);
+                mostrarTradiciones("", 1);
+
+                
+                if (func.modificar(dts)) {
+                    JOptionPane.showConfirmDialog(rootPane, "Los datos se modificaron correctamente");
+                    
+                    this.txtImagenURL.setText("");
+                    limpiarCampos();
+                    
+                    
+
+                }
+
+            }
+
+        }
+
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnActualizarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarImagenActionPerformed
+        // TODO add your handling code here:
+
+        if (!txtId.getText().equals("")) {
+
+            int confirmacion = JOptionPane.showConfirmDialog(rootPane, "¿Estas seguro de actualizar la imagen?", "Confirmar", 2);
+
+            if (confirmacion == 0) {
+
+                fTradiciones func = new fTradiciones();
+                dTradiciones dts = new dTradiciones();
+
+                dts.setId_Tradicion(txtId.getText());
+                dts.setImagen_Tradicion(ImagenTradicion);
+        
+                
+                
+                
+                func.actualizarImagen(dts);
+                mostrarTradiciones("", 1);
+
+                
+                if (func.modificar(dts)) {
+                    JOptionPane.showConfirmDialog(rootPane, "La imagen se actualizo correctamente");
+                    this.txtImagenURL.setText("");
+                    limpiarCampos();
+                    seInsertoImagen = false;
+                    
+
+                }
+
+            }
+
+        }
+        
+    }//GEN-LAST:event_btnActualizarImagenActionPerformed
+/**/
     /**
      * @param args the command line arguments
      */
@@ -822,18 +926,19 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizarImagen;
     private javax.swing.JButton btnAgregarTipo;
     private javax.swing.JButton btnAgregarTradicion;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnBuscar1;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnExaminar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnMostrarTodo;
     private javax.swing.JComboBox<String> cobTipo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
