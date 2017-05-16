@@ -72,7 +72,7 @@ public class fMunicipios {
 
         DefaultTableModel modelo;
         String [] Titulos = {"Municipio"};
-        String [] Registros = new String[9];
+        String [] Registros = new String[1];
          
         total_registros = 0;
         
@@ -113,7 +113,7 @@ public class fMunicipios {
         
         sSQL = " INSERT INTO municipios (id_municipios, nombre_municipio, ubicacion_municipio,"+
                " clima_municipio, escudo_municipio, id_region, numero_habitantes_municipio,"+
-               " numero_mujeres, numero_hombre) values(?,?)";
+               " numero_mujeres, numero_hombre) values(?,?,?,?,?,?,?,?,?)";
         
         
         try {

@@ -70,7 +70,7 @@ public class fInteresesCulturales {
         ArrayList<String> lista = new ArrayList<String>();
         
         sSQL = "SELECT nombre_interes_cultural FROM intereses_culturales";
-
+// CHECAR ESTA PARTE 
         try {
 
              Statement st = cn.createStatement();
@@ -158,8 +158,8 @@ public class fInteresesCulturales {
         //Metodo Insertar 
     public boolean insertar(dIntereses_Culturales dts){
         
-        sSQL = "INSERT INTO `intereses_culturales` (`id_interes_cultural`, "
-                + "`nombre_interes_cultural`, `descripcion_interes_cultural`, "
+        sSQL = "INSERT INTO `intereses_culturales` (`id_interes_cultural`,"
+                + " nombre_interes_cultural`, `descripcion_interes_cultural`, "
                 + "`horario_interes_cultural`, `direccion_interes_cultural`, "
                 + "`imagen_interes_cultural`, `id_municipio`, `id_tipo_interes`) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
