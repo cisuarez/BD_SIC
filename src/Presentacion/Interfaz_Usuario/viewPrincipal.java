@@ -51,6 +51,7 @@ public class viewPrincipal extends javax.swing.JFrame {
         cobMunicipio.removeAllItems();
         llenandoComboBox_Regiones();
         llenandoComboBox_Municipios(IdRegion);
+        //mostraTradiciones(IdMunicipio);
 
         this.txtIdentificador_Regi.hide();
         this.txtIdentificador_Munic.hide();
