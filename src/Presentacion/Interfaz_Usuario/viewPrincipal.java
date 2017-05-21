@@ -44,15 +44,16 @@ public class viewPrincipal extends javax.swing.JFrame {
 
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);    
         this.getContentPane().setBackground(Color.WHITE);
-
-        InicializarComponentes(IdMunicipio);
+      
 
         cobRegion.removeAllItems();
         cobMunicipio.removeAllItems();
+        
         llenandoComboBox_Regiones();
         llenandoComboBox_Municipios(IdRegion);
-        //mostraTradiciones(IdMunicipio);
-
+    
+        InicializarComponentes(IdMunicipio);
+        
         this.txtIdentificador_Regi.hide();
         this.txtIdentificador_Munic.hide();
 
@@ -76,6 +77,8 @@ public class viewPrincipal extends javax.swing.JFrame {
         mostrarLenguajes(id_Municipio);
     }
 
+    
+    
     void Limpiar() {
 
         this.txtNomTrad.setText("");
@@ -109,6 +112,7 @@ public class viewPrincipal extends javax.swing.JFrame {
     }
 
     
+    
     void llenandoComboBox_Municipios(String id) {
 
         ArrayList<String> lista = new ArrayList<String>();
@@ -120,6 +124,8 @@ public class viewPrincipal extends javax.swing.JFrame {
         }
     }
 
+    
+    
     void mostraTradiciones(String buscar) {
 
         try {
@@ -128,16 +134,19 @@ public class viewPrincipal extends javax.swing.JFrame {
 
             modelo = func.mostrarNombreTradicion(buscar);
 
-            tblTradicion_Nombre.setModel(modelo);
+            tblTradicionPrueba.setModel(modelo);
 
-            //lblNumero_Religiones.setText("Total de Religiones: " + Integer.toString(func.total_registros));
+            lblNumeroTrad.setText("Total de Tradiciones: " + Integer.toString(func.total_registros));
         } catch (Exception e) {
             JOptionPane.showConfirmDialog(rootPane, e);
         }
 
     }
 
-    //Metodo para mostrar los Intereses Culturales
+    
+    
+    
+//Metodo para mostrar los Intereses Culturales
     void mostrarIC(String buscar) {
 
         try {
@@ -149,11 +158,15 @@ public class viewPrincipal extends javax.swing.JFrame {
             tblInteresesCulturales.setModel(modelo);
 
         } catch (Exception e) {
+            
             JOptionPane.showConfirmDialog(rootPane, e);
         }
 
     }
 
+    
+    
+    
     void mostrarReligiones(String buscar) {
 
         try {
@@ -172,6 +185,8 @@ public class viewPrincipal extends javax.swing.JFrame {
 
     }
     
+    
+    
     void mostrarLenguajes(String buscar){
         
           try {
@@ -188,6 +203,7 @@ public class viewPrincipal extends javax.swing.JFrame {
     
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -216,8 +232,8 @@ public class viewPrincipal extends javax.swing.JFrame {
         txtUbicacion = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblTradicion_Nombre = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        tblTradicionPrueba = new javax.swing.JTable();
+        lblNumeroTrad = new javax.swing.JLabel();
         lblTradicionImagen = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -374,7 +390,7 @@ public class viewPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Datos Generales", jPanel1);
 
-        tblTradicion_Nombre.setModel(new javax.swing.table.DefaultTableModel(
+        tblTradicionPrueba.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
                 {null},
@@ -385,14 +401,14 @@ public class viewPrincipal extends javax.swing.JFrame {
                 "Title 1"
             }
         ));
-        tblTradicion_Nombre.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblTradicionPrueba.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblTradicion_NombreMouseClicked(evt);
+                tblTradicionPruebaMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(tblTradicion_Nombre);
+        jScrollPane3.setViewportView(tblTradicionPrueba);
 
-        jLabel1.setText("Numero de Tradiciones: ");
+        lblNumeroTrad.setText("Numero de Tradiciones: ");
 
         lblTradicionImagen.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -431,7 +447,7 @@ public class viewPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                            .addComponent(lblNumeroTrad)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29)
@@ -466,35 +482,31 @@ public class viewPrincipal extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(jLabel19)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addComponent(txtNomTrad, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14)
-                                    .addComponent(txtNomTrad, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(41, 41, 41)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(22, 22, 22)
-                                        .addComponent(jLabel16))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtFechaTrad, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(31, 31, 31)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtTipoTrad)))
-                            .addComponent(lblTradicionImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addGap(22, 22, 22)
+                                .addComponent(jLabel16))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(txtFechaTrad, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtTipoTrad)))
+                    .addComponent(lblTradicionImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNumeroTrad)
+                .addContainerGap(145, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Tradiciones", jPanel2);
@@ -712,24 +724,21 @@ public class viewPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1346, Short.MAX_VALUE)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(lblNumero_Religiones))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(lblNumero_Religiones))
+                .addContainerGap(787, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblNumero_Religiones)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Religiones", jPanel5);
@@ -935,12 +944,12 @@ public class viewPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnMenuActionPerformed
 
-    private void tblTradicion_NombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTradicion_NombreMouseClicked
+    private void tblTradicionPruebaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTradicionPruebaMouseClicked
 
         String nombre_tradicion;
-        int fila = tblTradicion_Nombre.rowAtPoint(evt.getPoint());
+        int fila = tblTradicionPrueba.rowAtPoint(evt.getPoint());
 
-        nombre_tradicion = tblTradicion_Nombre.getValueAt(fila, 0).toString();
+        nombre_tradicion = tblTradicionPrueba.getValueAt(fila, 0).toString();
 
         try {
 
@@ -971,7 +980,7 @@ public class viewPrincipal extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_tblTradicion_NombreMouseClicked
+    }//GEN-LAST:event_tblTradicionPruebaMouseClicked
 
     private void tblInteresesCulturalesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblInteresesCulturalesMouseClicked
         // TODO add your handling code here:
@@ -1055,7 +1064,6 @@ public class viewPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnMenu;
     private javax.swing.JComboBox<String> cobMunicipio;
     private javax.swing.JComboBox<String> cobRegion;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1095,11 +1103,12 @@ public class viewPrincipal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblEscudoMunicipio;
     private javax.swing.JLabel lblImagen;
+    private javax.swing.JLabel lblNumeroTrad;
     private javax.swing.JLabel lblNumero_Religiones;
     private javax.swing.JLabel lblTradicionImagen;
     private javax.swing.JTable tblInteresesCulturales;
     private javax.swing.JTable tblLenguajes;
-    private javax.swing.JTable tblTradicion_Nombre;
+    private javax.swing.JTable tblTradicionPrueba;
     private javax.swing.JTextField txtClima;
     private javax.swing.JTextArea txtDescIC;
     private javax.swing.JTextArea txtDescTrad;

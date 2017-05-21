@@ -17,7 +17,7 @@ public class fTradiciones {
     private String sSQL = "";
     
     
-    int total_registros;
+    public int total_registros;
     
     
     
@@ -77,6 +77,8 @@ public class fTradiciones {
     
     }
     
+    
+    
     public boolean eliminar(dTradiciones dts){
     
         sSQL ="DELETE FROM tradiciones WHERE id_tradicion = ?" ;
@@ -111,6 +113,7 @@ public class fTradiciones {
     
     
 
+    
     public boolean modificar(dTradiciones dts){
         
         sSQL = "UPDATE tradiciones SET nombre_tradicion = ?,"
@@ -159,6 +162,8 @@ public class fTradiciones {
     
     }
     
+    
+    
     public boolean actualizarImagen(dTradiciones dts){
         
         sSQL = "UPDATE tradiciones SET imagen_tradicion =? "
@@ -192,31 +197,6 @@ public class fTradiciones {
         }
     
     }
-    
-    
-    
-    
-    
-    
-    
-    /*
-    LIKE '%"
-    
-    */
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -298,7 +278,7 @@ public class fTradiciones {
         
         sSQL = "SELECT * FROM tipo_tradicion GROUP BY nombre_tipo_tradicion";
         
-        try {
+ /*       try {
             
             
              Statement st = cn.createStatement();
@@ -307,7 +287,7 @@ public class fTradiciones {
         } catch (Exception e) {
             
             JOptionPane.showInputDialog("Se produjo un error: "+ e);
-        }
+        }*/
         try {
              Statement st = cn.createStatement();
              ResultSet rs = st.executeQuery(sSQL);
@@ -323,7 +303,7 @@ public class fTradiciones {
     
         return lista;
     }
-    
+    /*
 
         void Insertar(){
         
@@ -331,7 +311,7 @@ public class fTradiciones {
         
         }
         
-        
+        */
         
         
     public DefaultTableModel mostrar(String buscar){
@@ -455,6 +435,7 @@ public class fTradiciones {
         public DefaultTableModel mostrarNombreTradicion(String buscar){
 
         DefaultTableModel modelo;
+        
         String [] Titulos = {"Tradiciones"};
         String [] Registros = new String[1];
          
@@ -462,7 +443,7 @@ public class fTradiciones {
         
         modelo = new DefaultTableModel(null,Titulos);
         
-        sSQL =  "SELECT tradiciones.nombre_tradicion "+
+        sSQL =  "SELECT nombre_tradicion "+
                 "FROM tradiciones, municipios_tradiciones WHERE municipios_tradiciones.id_municipio = '" + 
                 buscar + "' AND municipios_tradiciones.id_tradicion = tradiciones.id_tradicion;";
         
@@ -473,9 +454,7 @@ public class fTradiciones {
             
             while(rs.next()){
                 
-                Registros[0] = rs.getString("tradiciones.nombre_tradicion");
-            
-           
+                Registros[0] = rs.getString("nombre_tradicion");
                 
                 total_registros = total_registros + 1;
                 
@@ -485,8 +464,8 @@ public class fTradiciones {
             return modelo;
             
         } catch (Exception e) {
-            JOptionPane.showConfirmDialog(null, e);
-            
+
+            JOptionPane.showConfirmDialog(null, e);            
             return null;
             
         }
