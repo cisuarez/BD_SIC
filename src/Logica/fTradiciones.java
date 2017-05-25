@@ -435,7 +435,6 @@ public class fTradiciones {
         public DefaultTableModel mostrarNombreTradicion(String buscar){
 
         DefaultTableModel modelo;
-        
         String [] Titulos = {"Tradiciones"};
         String [] Registros = new String[1];
          
@@ -443,7 +442,7 @@ public class fTradiciones {
         
         modelo = new DefaultTableModel(null,Titulos);
         
-        sSQL =  "SELECT nombre_tradicion "+
+        sSQL =  "SELECT tradiciones.nombre_tradicion "+
                 "FROM tradiciones, municipios_tradiciones WHERE municipios_tradiciones.id_municipio = '" + 
                 buscar + "' AND municipios_tradiciones.id_tradicion = tradiciones.id_tradicion;";
         
@@ -454,7 +453,7 @@ public class fTradiciones {
             
             while(rs.next()){
                 
-                Registros[0] = rs.getString("nombre_tradicion");
+                Registros[0] = rs.getString("tradiciones.nombre_tradicion");
                 
                 total_registros = total_registros + 1;
                 
@@ -464,12 +463,13 @@ public class fTradiciones {
             return modelo;
             
         } catch (Exception e) {
-
-            JOptionPane.showConfirmDialog(null, e);            
+            JOptionPane.showConfirmDialog(null, e);
+            
             return null;
             
         }
-    
+
+            
     }
 
 }

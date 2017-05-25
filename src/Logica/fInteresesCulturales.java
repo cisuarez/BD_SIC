@@ -43,8 +43,6 @@ public class fInteresesCulturales {
             while(rs.next()){
                 
                 Registros[0] = rs.getString("nombre_interes_cultural");
-            
-           
                 
                 total_registros = total_registros + 1;
                 
@@ -142,8 +140,6 @@ public class fInteresesCulturales {
     
     }
     
-    
-
     
     /****************************************************************
      *                                                              *    
@@ -470,10 +466,6 @@ public class fInteresesCulturales {
                 Registros[6] = rs.getString("municipios.nombre_municipio");
                 Registros[7] = rs.getString("regiones.nombre_region");            
             
-            
-            
-                
-                
                 
                 total_registros = total_registros + 1;
                 

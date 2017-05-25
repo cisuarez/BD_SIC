@@ -49,13 +49,15 @@ public class viewPrincipal extends javax.swing.JFrame {
         cobRegion.removeAllItems();
         cobMunicipio.removeAllItems();
         
+        jTextField1.setText(IdRegion);
+        
         llenandoComboBox_Regiones();
         llenandoComboBox_Municipios(IdRegion);
     
-        InicializarComponentes(IdMunicipio);
+        InicializarComponentes(this.txtIdentificador_Munic.getText());
         
-        this.txtIdentificador_Regi.hide();
-        this.txtIdentificador_Munic.hide();
+     //   this.txtIdentificador_Regi.hide();
+     //   this.txtIdentificador_Munic.hide();
 
         txtDescTrad.setLineWrap(true);
         txtDescTrad.setWrapStyleWord(true);
@@ -127,7 +129,7 @@ public class viewPrincipal extends javax.swing.JFrame {
     
     
     void mostraTradiciones(String buscar) {
-
+/*
         try {
             DefaultTableModel modelo;
             fTradiciones func = new fTradiciones();
@@ -137,6 +139,20 @@ public class viewPrincipal extends javax.swing.JFrame {
             tblTradicionPrueba.setModel(modelo);
 
             lblNumeroTrad.setText("Total de Tradiciones: " + Integer.toString(func.total_registros));
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(rootPane, e);
+        }*/
+
+
+        try {
+            DefaultTableModel modelo;
+            fTradiciones func = new fTradiciones();
+
+            modelo = func.mostrarNombreTradicion(buscar);
+
+            tblTradicionPrueba.setModel(modelo);
+
+            //lblNumero_Religiones.setText("Total de Religiones: " + Integer.toString(func.total_registros));
         } catch (Exception e) {
             JOptionPane.showConfirmDialog(rootPane, e);
         }
@@ -280,6 +296,7 @@ public class viewPrincipal extends javax.swing.JFrame {
         txtIdentificador_Regi = new javax.swing.JTextField();
         txtIdentificador_Munic = new javax.swing.JTextField();
         btnMenu = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Informacion Cultural de los Municipios");
@@ -784,6 +801,8 @@ public class viewPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jTextField1.setText("jTextField1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -794,12 +813,14 @@ public class viewPrincipal extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtIdentificador_Munic, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtIdentificador_Regi, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(333, 333, 333))
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(553, 553, 553))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(404, 404, 404)
+                        .addGap(123, 123, 123)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtIdentificador_Munic, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+                            .addComponent(txtIdentificador_Regi))
+                        .addGap(149, 149, 149)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -822,18 +843,18 @@ public class viewPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtIdentificador_Munic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtIdentificador_Regi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(cobRegion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(54, 54, 54)
+                            .addComponent(cobRegion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdentificador_Munic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(53, 53, 53)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(cobMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cobMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdentificador_Regi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(lblEscudoMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 445, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -873,6 +894,8 @@ public class viewPrincipal extends javax.swing.JFrame {
 
             IdRegion = rs.getString("id_region");
 
+            
+            this.txtIdentificador_Regi.setText(IdRegion);
             llenandoComboBox_Municipios(IdRegion);
 
         } catch (Exception e) {
@@ -928,6 +951,8 @@ public class viewPrincipal extends javax.swing.JFrame {
 
             mostrarReligiones(IdMunicipio);
 
+            this.txtIdentificador_Munic.setText(IdMunicipio);
+            
             InicializarComponentes(IdMunicipio);
 
         } catch (Exception e) {
@@ -1101,6 +1126,7 @@ public class viewPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblEscudoMunicipio;
     private javax.swing.JLabel lblImagen;
     private javax.swing.JLabel lblNumeroTrad;

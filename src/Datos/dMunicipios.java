@@ -1,5 +1,7 @@
 package Datos;
 
+import java.io.FileInputStream;
+
 
 public class dMunicipios {
     
@@ -8,7 +10,7 @@ public class dMunicipios {
     String ubicacion_municipio;
     String clima_municipio;
     String id_region_municipio;
-    String escudo_municipio;
+    FileInputStream escudo_municipio;
     int numero_habitantes;
     int numero_hombre;
     int numero_mujeres;
@@ -18,7 +20,7 @@ public class dMunicipios {
 
     
     //Manejo de Datos de los municipios
-    public dMunicipios(String id_municipio, String nombre_municipio, String ubicacion_municipio, String clima_municipio, String id_region_municipio, String escudo_municipio, int numero_habitantes, int numero_hombre, int numero_mujeres) {
+    public dMunicipios(String id_municipio, String nombre_municipio, String ubicacion_municipio, String clima_municipio, String id_region_municipio, FileInputStream escudo_municipio, int numero_habitantes, int numero_hombre, int numero_mujeres) {
 
         this.id_municipio = id_municipio;
         this.nombre_municipio = nombre_municipio;
@@ -72,11 +74,11 @@ public class dMunicipios {
         this.id_region_municipio = id_region_municipio;
     }
 
-    public String getEscudo_municipio() {
+    public FileInputStream getEscudo_municipio() {
         return escudo_municipio;
     }
 
-    public void setEscudo_municipio(String escudo_municipio) {
+    public void setEscudo_municipio(FileInputStream escudo_municipio) {
         this.escudo_municipio = escudo_municipio;
     }
 

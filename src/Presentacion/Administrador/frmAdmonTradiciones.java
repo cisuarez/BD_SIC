@@ -57,7 +57,7 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
         this.txtId.setText("");
         this.txtFecha.setText("");
         this.txtImagenURL.setText("");
-        this.lblImagen.setIcon(null);
+       // this.lblImagen.setIcon(null);
 
         TipoTrad = "";
 
@@ -869,13 +869,9 @@ public class frmAdmonTradiciones extends javax.swing.JFrame {
 
                 dts.setId_Tradicion(txtId.getText());
                 dts.setImagen_Tradicion(ImagenTradicion);
-        
-                
-                
                 
                 func.actualizarImagen(dts);
                 mostrarTradiciones("", 1);
-
                 
                 if (func.modificar(dts)) {
                     JOptionPane.showConfirmDialog(rootPane, "La imagen se actualizo correctamente");

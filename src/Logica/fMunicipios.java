@@ -32,7 +32,16 @@ public class fMunicipios {
         
         modelo = new DefaultTableModel(null,Titulos);
         
-        sSQL = "SELECT * FROM municipios WHERE id_municipio LIKE '%" + buscar + "%' ORDER BY id_region;";
+       /* sSQL = "SELECT municipios.id_municipio , municipios.nombre_municipio, "
+             + "municipios.ubicacion_municipio, municipios.clima_municipio, "
+             + "regiones.nombre_region, municipios.numero_habitantes_municipio, "
+             + "municipios.numero_hombres, municipios.numero_mujeres, "
+             + "municipios.act_economica_municipio\n" 
+             + "FROM municipios, regiones\n" 
+             + "WHERE municipios.id_municipio = '"+ buscar +"' "
+             + "AND municipios.id_region = regiones.id_region;";
+         */       
+            sSQL = "SELECT * FROM municipios WHERE id_municipio LIKE '%" + buscar + "%' ORDER BY id_region;";
         
         try {
             
@@ -125,14 +134,14 @@ public class fMunicipios {
             pat.setString(2, dts.getNombre_municipio());
             pat.setString(3, dts.getUbicacion_municipio());
             pat.setString(4, dts.getClima_municipio());
-            //pat.setString(5, dts.getEscudo_municipio());
+            pat.setBinaryStream(5, dts.getEscudo_municipio());
             pat.setString(6, dts.getId_region_municipio());
             pat.setInt(7, dts.getNumero_habitantes());
             pat.setInt(8, dts.getNumero_mujeres());
             pat.setInt(9, dts.getNumero_hombre());
             
-            archivoEscudo = new FileInputStream(dts.getEscudo_municipio());
-            pat.setBinaryStream(5, archivoEscudo);
+           // archivoEscudo = new FileInputStream(dts.getEscudo_municipio());
+           // pat.setBinaryStream(5, archivoEscudo);
 
             
             int n = pat.executeUpdate();
