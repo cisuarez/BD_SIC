@@ -152,15 +152,50 @@ public class fInteresesCulturales {
     
     
         //Metodo Insertar 
-    public boolean insertar(dIntereses_Culturales dts){
+    /* public boolean insertar(dIntereses_Culturales dts){
         
         sSQL = "INSERT INTO `intereses_culturales` (`id_interes_cultural`,"
                 + " nombre_interes_cultural`, `descripcion_interes_cultural`, "
                 + "`horario_interes_cultural`, `direccion_interes_cultural`, "
                 + "`imagen_interes_cultural`, `id_municipio`, `id_tipo_interes`) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+*/
         
-        
+    public boolean insertar(dIntereses_Culturales dts){
+        try {
+            InteresCultural interes = fabrica.crearInteresCultural();
+            
+            // Obtener los datos específicos del interés cultural mediante los métodos de la clase InteresCultural
+            String nombre = interes.getNombre();
+            String descripcion = interes.getDescripcion();
+            // Otros atributos específicos del interés cultural
+            
+            // Preparar la consulta SQL para insertar en la base de datos
+            sSQL = "INSERT INTO `intereses_culturales` (`nombre_interes_cultural`, `descripcion_interes_cultural`, ...) " 
+                + "VALUES (?, ?, ...);";
+            
+            PreparedStatement pat = cn.prepareStatement(sSQL);
+            pat.setString(1, nombre);
+            pat.setString(2, descripcion);
+            // Establecer los valores para los otros campos de la tabla intereses_culturales
+            
+            int n = pat.executeUpdate();
+            
+            if (n != 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            return false;
+        }
+    }
+
+
+
+
+
         
         try {
         
