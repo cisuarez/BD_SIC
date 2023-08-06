@@ -118,12 +118,13 @@ public class fMunicipios {
     
     
     //Metodo Insertar Municipio
-    public boolean insertar(dMunicipios dts){
+    /*public boolean insertar(dMunicipios dts){
         
         sSQL = " INSERT INTO municipios (id_municipios, nombre_municipio, ubicacion_municipio,"+
                " clima_municipio, escudo_municipio, id_region, numero_habitantes_municipio,"+
                " numero_mujeres, numero_hombre) values(?,?,?,?,?,?,?,?,?)";
-        
+
+    
         
         try {
             
@@ -165,7 +166,37 @@ public class fMunicipios {
         
     }
     
-    
+    */
+    public boolean insertarConBuilder(MunicipioBuilder builder) {
+    try {
+        dMunicipios municipio = builder.build();
+        sSQL = "INSERT INTO municipios (id_municipios, nombre_municipio, ubicacion_municipio," +
+               " clima_municipio, escudo_municipio, id_region, numero_habitantes_municipio," +
+               " numero_mujeres, numero_hombre) values(?,?,?,?,?,?,?,?,?)";
+
+        PreparedStatement pat = cn.prepareStatement(sSQL);
+        pat.setString(1, municipio.getId_municipio());
+        pat.setString(2, municipio.getNombre_municipio());
+        pat.setString(3, municipio.getUbicacion_municipio());
+        pat.setString(4, municipio.getClima_municipio());
+        pat.setBinaryStream(5, municipio.getEscudo_municipio());
+        pat.setString(6, municipio.getId_region_municipio());
+        pat.setInt(7, municipio.getNumero_habitantes());
+        pat.setInt(8, municipio.getNumero_mujeres());
+        pat.setInt(9, municipio.getNumero_hombre());
+
+        int n = pat.executeUpdate();
+
+        if (n != 0) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (Exception e) {
+        JOptionPane.showConfirmDialog(null, e);
+        return false;
+    }
+}
     
     
         public ArrayList<String> llenar_combo_Municipios(String id){
